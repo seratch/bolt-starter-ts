@@ -26,8 +26,8 @@ export async function publishHomeTab(client: WebClient, userId: string) {
 }
 
 export async function buildNavigationMessageResponse(client: WebClient, teamId: string, botId: string) {
-  const botsInfo = await client.bots.info({ bot: botId }) as any;
-  const appId = botsInfo.bot.app_id;
+  const botsInfo = await client.bots.info({ bot: botId });
+  const appId = botsInfo.bot?.app_id;
   const url = `slack://app?team=${teamId}&id=${appId}&tab=home`;
   return {
     text: `:white_check_mark: Check the latest Home tab! <${url}|Go>`,
