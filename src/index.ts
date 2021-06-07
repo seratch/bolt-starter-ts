@@ -22,7 +22,7 @@ app.command("/publish-home-tab", async ({ body, client, logger, context, ack }) 
   const userId = body.user_id;
   try {
     await simpleHomeTab.publishHomeTab(client, userId);
-    const response = await simpleHomeTab.buildNavigationMessageResponse(client, body.team_id, context.botId);
+    const response = await simpleHomeTab.buildNavigationMessageResponse(client, body.team_id, context.botId!!);
     await ack(response);
   } catch (e) {
     logger.error(`Failed to publish a view for user: ${userId} (response: ${JSON.stringify(e)})`, e)
