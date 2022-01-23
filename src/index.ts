@@ -24,7 +24,7 @@ app.command("/publish-home-tab", async ({ body, client, logger, context, ack }) 
     await simpleHomeTab.publishHomeTab(client, userId);
     const response = await simpleHomeTab.buildNavigationMessageResponse(client, body.team_id, context.botId!!);
     await ack(response);
-  } catch (e) {
+  } catch (e: any) {
     logger.error(`Failed to publish a view for user: ${userId} (response: ${JSON.stringify(e)})`, e)
     await ack(`:x: Failed to publish a modal (error: ${e.code})`);
   }
