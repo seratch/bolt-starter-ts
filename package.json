@@ -15,7 +15,7 @@
   "author": "Kazuhiro Sera (@seratch)",
   "license": "MIT",
   "dependencies": {
-    "@slack/bolt": "^3.9.0",
+    "@slack/bolt": "^3.11.0",
     "@types/node": "^14.14.20",
     "dotenv": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
