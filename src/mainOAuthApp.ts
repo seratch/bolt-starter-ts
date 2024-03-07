@@ -41,7 +41,7 @@ class NotScalableStateStore implements StateStore {
 }
 
 const processBeforeResponse = false;
-const logLevel = process.env.SLACK_LOG_LEVEL as LogLevel || LogLevel.INFO;
+const logLevel = process.env.SLACK_LOG_LEVEL as LogLevel || LogLevel.DEBUG;
 const app = new App({
   logLevel,
   processBeforeResponse,

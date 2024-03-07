@@ -14,8 +14,19 @@ export function registerListeners(app: App) {
       const response = await simpleHomeTab.buildNavigationMessageResponse(client, body.team_id, context.botId!!);
       await ack(response);
     } catch (e: any) {
-      logger.error(`Failed to publish a view for user: ${userId} (response: ${JSON.stringify(e)})`, e)
+      logger.error(`Failed to publish a view for user: ${userId} (response: ${JSON.stringify(e)})`, e);
       await ack(`:x: Failed to publish a modal (error: ${e.code})`);
+    }
+  });
+
+  app.event("app_home_opened", async ({ event, client, logger, context }) => {
+    if (event.tab === "home") {
+      const userId = context.userId!;
+      try {
+        await simpleHomeTab.publishHomeTab(client, userId);
+      } catch (e: any) {
+        logger.error(`Failed to publish a view for user: ${userId} (response: ${JSON.stringify(e)})`, e);
+      }
     }
   });
 

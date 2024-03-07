@@ -1,0 +1,45 @@
+{
+  "display_information": {
+    "name": "BoltTS",
+    "description": "You can update this later",
+    "background_color": "#4361ba",
+    "long_description": ""
+  },
+  "features": {
+    "app_home": {
+      "home_tab_enabled": true,
+      "messages_tab_enabled": true,
+      "messages_tab_read_only_enabled": true
+    },
+    "bot_user": {
+      "display_name": "BoltTS Bot",
+      "always_online": true
+    },
+    "slash_commands": [
+      {
+        "command": "/publish-home-tab",
+        "description": "Publish this app's home tab",
+        "usage_hint": "Test",
+        "should_escape": true
+      }
+    ],
+    "unfurl_domains": []
+  },
+  "oauth_config": {
+    "scopes": {
+      "bot": ["commands", "users:read"]
+    }
+  },
+  "settings": {
+    "interactivity": {
+      "is_enabled": true
+    },
+    "event_subscriptions": {
+      "bot_events": ["app_home_opened"]
+    },
+    "org_deploy_enabled": true,
+    "socket_mode_enabled": true,
+    "token_rotation_enabled": false
+  },
+  "outgoing_domains": []
+}

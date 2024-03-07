@@ -5,19 +5,18 @@ import { App } from '@slack/bolt';
 import { LogLevel } from '@slack/logger';
 import { registerListeners } from './listeners';
 
-const processBeforeResponse = false;
-const logLevel = process.env.SLACK_LOG_LEVEL as LogLevel || LogLevel.INFO;
+const logLevel = process.env.SLACK_LOG_LEVEL as LogLevel || LogLevel.DEBUG;
 const app = new App({
+  socketMode: true,
   logLevel,
-  processBeforeResponse,
   token: process.env.SLACK_BOT_TOKEN,
-  signingSecret: process.env.SLACK_SIGNING_SECRET
+  appToken: process.env.SLACK_APP_TOKEN,
 });
 
 registerListeners(app);
 
 (async () => {
-  await app.start(Number(process.env.PORT) || 3000);
+  await app.start();
   console.log('⚡️ Bolt app is running!');
 })();
 
